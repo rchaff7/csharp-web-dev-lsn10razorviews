@@ -15,9 +15,16 @@
     <p>No events yet!</p>
 }
 
-<ul>
-    @foreach(string meeting in ViewBag.events)
+<table>
+    <tr>
+        <th>Event Name</th>
+        <th>Event Description</th>
+    </tr>
+    @foreach (KeyValuePair<string, string> pair in ViewBag.events)
     {
-        <li>@meeting</li>
+        <tr>
+            <td>@pair.Key</td>
+            <td>@pair.Value</td>
+        </tr>
     }
-</ul>
+</table>
