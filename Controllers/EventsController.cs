@@ -23,9 +23,9 @@ namespace CodingEvents.Controllers
         }
 
         [HttpPost("/events/add")]
-        public IActionResult NewEvent(string name, string description)
+        public IActionResult NewEvent(Event newEvent)
         {
-            EventData.Add(new Event(name, description));
+            EventData.Add(newEvent);
 
             return Redirect("/events");
         }
