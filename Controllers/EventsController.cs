@@ -1,4 +1,5 @@
-﻿using CodingEvents.Models;
+﻿using CodingEvents.Data;
+using CodingEvents.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,17 +10,13 @@ namespace CodingEvents.Controllers
 {
     public class EventsController : Controller
     {
-        static private List<Event> Events = new List<Event>();
-
-        [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.events = Events;
+            ViewBag.events = EventData.GetAll();
 
             return View();
         }
 
-        [HttpGet]
         public IActionResult Add()
         {
             return View();
@@ -28,8 +25,24 @@ namespace CodingEvents.Controllers
         [HttpPost("/events/add")]
         public IActionResult NewEvent(string name, string description)
         {
-            Events.Add(new Event(name, description));
+            EventData.Add(new Event(name, description));
 
+            return Redirect("/events");
+        }
+
+        public IActionResult Delete()
+        {
+            ViewBag.events = EventData.GetAll();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int[] eventIds)
+        {
+            foreach(int eventId in eventIds)
+            {
+                EventData.Remove(eventId);
+            }
             return Redirect("/events");
         }
     }
