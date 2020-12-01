@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CodingEvents.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace CodingEvents.Controllers
 {
     public class EventsController : Controller
     {
-        static private Dictionary<string,string> Events = new Dictionary<string, string>();
+        static private List<Event> Events = new List<Event>();
 
         [HttpGet]
         public IActionResult Index()
@@ -27,7 +28,8 @@ namespace CodingEvents.Controllers
         [HttpPost("/events/add")]
         public IActionResult NewEvent(string name, string description)
         {
-            Events.Add(name, description);
+            Events.Add(new Event(name, description));
+
             return Redirect("/events");
         }
     }
