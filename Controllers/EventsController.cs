@@ -39,10 +39,26 @@ namespace CodingEvents.Controllers
         [HttpPost]
         public IActionResult Delete(int[] eventIds)
         {
-            foreach(int eventId in eventIds)
+            foreach (int eventId in eventIds)
             {
                 EventData.Remove(eventId);
             }
+            return Redirect("/events");
+        }
+
+        [Route("/events/edit/{eventId?}")]
+        public IActionResult Edit(int eventId)
+        {
+            ViewBag.eventToEdit = EventData.GetById(eventId);
+            ViewBag.title = "Edit Event " + ViewBag.eventToEdit.Name + "(id=" + ViewBag.eventToEdit.Id + ")";
+            return View();
+        }
+
+        [HttpPost("/events/edit")]
+        public IActionResult SubmitEditEventForm(int eventId, string name, string description)
+        {
+            EventData.GetById(eventId).Name = name;
+            EventData.GetById(eventId).Description = description;
             return Redirect("/events");
         }
     }

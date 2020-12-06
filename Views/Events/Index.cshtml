@@ -27,11 +27,12 @@ else
         </tr>
         @foreach (var obj in ViewBag.events)
         {
-            <tr>
-                <td>@obj.Id</td>
-                <td>@obj.Name</td>
-                <td>@obj.Description</td>
-            </tr>
+    <tr>
+        <td>@obj.Id</td>
+        <td>@obj.Name</td>
+        <td>@obj.Description</td>
+        <td><a asp-controller="Events" asp-action="Edit" asp-route-eventId="@obj.Id">Edit Event</a></td>
+    </tr>
         }
     </table>
 }
