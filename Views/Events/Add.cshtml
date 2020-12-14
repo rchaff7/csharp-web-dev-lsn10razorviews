@@ -12,20 +12,38 @@
     <div class="form-group">
         <p>
             <label asp-for="Name">Event Name:</label>
-            <input asp-for="Name" placeholder="event name" />
+            <input asp-for="Name" />
             <span asp-validation-for="Name"></span>
         </p>
 
         <p>
             <label asp-for="Description">Event Description:</label>
-            <input asp-for="Description" placeholder="event description" />
+            <input asp-for="Description" />
             <span asp-validation-for="Description"></span>
         </p>
 
         <p>
             <label asp-for="ContactEmail">Email:</label>
-            <input asp-for="ContactEmail" placeholder="email" />
+            <input asp-for="ContactEmail" />
             <span asp-validation-for="ContactEmail"></span>
+        </p>
+
+        <p>
+            <label asp-for="EventLocation">Location:</label>
+            <input asp-for="EventLocation" />
+            <span asp-validation-for="EventLocation"></span>
+        </p>
+
+        <p>
+            <label asp-for="NumberOfAttendees">Attendee Count:</label>
+            <input asp-for="NumberOfAttendees" />
+            <span asp-validation-for="NumberOfAttendees"></span>
+        </p>
+
+        <p>
+            <label asp-for="MustRegister">Register:</label>
+            <input asp-for="MustRegister" />
+            <span asp-validation-for="MustRegister"></span>
         </p>
     </div>
 

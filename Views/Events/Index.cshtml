@@ -28,16 +28,20 @@ else
             <th>Event Name</th>
             <th>Event Description</th>
             <th>Email</th>
+            <th>Location</th>
+            <th>Attendee Count</th>
         </tr>
         @foreach (var obj in Model)
         {
-    <tr>
-        <td>@obj.Id</td>
-        <td>@obj.Name</td>
-        <td>@obj.Description</td>
-        <td>@obj.ContactEmail</td>
-        <td><a asp-controller="Events" asp-action="Edit" asp-route-eventId="@obj.Id">Edit Event</a></td>
-    </tr>
+            <tr>
+                <td>@obj.Id</td>
+                <td>@obj.Name</td>
+                <td>@obj.Description</td>
+                <td>@obj.ContactEmail</td>
+                <td>@obj.EventLocation</td>
+                <td>@obj.NumberOfAttendees</td>
+                <td><a asp-controller="Events" asp-action="Edit" asp-route-eventId="@obj.Id">Edit Event</a></td>
+            </tr>
         }
     </table>
 }
